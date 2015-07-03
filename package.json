@@ -2,10 +2,15 @@
   "name": "anggrid",
   "version": "1.0.0",
   "description": "",
-  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "start": "supervisor server.js"
   },
+  "main": "server.js",
   "author": "Nitish Kumar",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "~1.12.4",
+    "ejs": "^2.3.1",
+    "express": "~4.12.4"
+  }
 }
