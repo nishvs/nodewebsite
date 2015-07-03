@@ -1,0 +1,125 @@
+<html>
+<head>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="/jquery.dataTables.min.js"></script>
+<link rel="Stylesheet" href="//cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+</head>
+<body>
+<h1>Angular Grid</h1>
+<table id="example" class="display" cellspacing="0" width="100%">
+
+</table>
+</body>
+<script>
+$(document).ready(function() {
+    var subscriptionlist = [];
+//    $.getJSON( "http://localhost:3000/api/getsubcriptionlist", function( data ){
+//      subscriptionlist = data;
+//      console.log('Received Data from server:'+data);
+//  });
+
+$.ajax({
+type : "GET",
+url: "http://localhost:4000/api/getsubcriptionlist",
+success: function (data, text) {
+    //subscriptionlist = data;
+    //renderTable(data);
+    $('#example').dataTable( {
+      "aaData": data,
+      "aoColumns": [
+        {
+          "mData":"_id",
+          "sTitle": "ID"
+        },{
+          "mData":"name",
+          "sTitle": "Name"
+        },{
+          "mData":"cost",
+          "sTitle": "Cost"
+        },{
+          "mData":"restrictionValue",
+          "sTitle": "restrictionValue"
+        },{
+          "mData":"validFrom",
+          "sTitle": "validFrom"
+        },{
+          "mData":"validTo",
+          "sTitle": "validTo"
+        },{
+          "mData":"numberOfAdminUser",
+          "sTitle": "numberOfAdminUser"
+        },{
+          "mData":"numberOfUser",
+          "sTitle": "numberOfUser"
+        },{
+          "mData":"numberOfAPI",
+          "sTitle": "numberOfAPI"
+        },{
+          "mData":"isActive",
+          "sTitle": "isActive"
+        },{
+          "mData":"auditId",
+          "sTitle": "auditId"
+        },{
+          "mData":"imgpath",
+          "sTitle": "imgpath"
+        }]
+    } );
+    console.log('Received Data from server:'+subscriptionlist);
+}
+
+
+
+});
+
+  // $('#example').dataTable( {
+  //   "aaData": subscriptionlist,
+  //   "aoColumns": [
+  //     {
+  //       "mData":"_id",
+  //       "sTitle": "ID"
+  //     },{
+  //       "mData":"name",
+  //       "sTitle": "Name"
+  //     },{
+  //       "mData":"cost",
+  //       "sTitle": "Cost"
+  //     },{
+  //       "mData":"restrictionValue",
+  //       "sTitle": "restrictionValue"
+  //     },{
+  //       "mData":"validFrom",
+  //       "sTitle": "validFrom"
+  //     },{
+  //       "mData":"validTo",
+  //       "sTitle": "validTo"
+  //     },{
+  //       "mData":"numberOfAdminUser",
+  //       "sTitle": "numberOfAdminUser"
+  //     },{
+  //       "mData":"numberOfUser",
+  //       "sTitle": "numberOfUser"
+  //     },{
+  //       "mData":"numberOfAPI",
+  //       "sTitle": "numberOfAPI"
+  //     },{
+  //       "mData":"isActive",
+  //       "sTitle": "isActive"
+  //     },{
+  //       "mData":"auditId",
+  //       "sTitle": "auditId"
+  //     },{
+  //       "mData":"imgpath",
+  //       "sTitle": "imgpath"
+  //     }]
+  // } );
+
+
+//    $http.get('http://localhost:4000/api/getsubcriptionlist').success(function(data){
+//      subscriptionlist = data;
+//      console.log('Received Data from server:'+data);
+//    });
+
+} );
+</script>
+</html>
